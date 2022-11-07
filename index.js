@@ -53,7 +53,7 @@ module.exports = class Feeds {
     const drive = await this._drive(feedID)
     await drive.ready()
     if (opts?.announce !== false) {
-      await this.swarm.join(drive.discoveryKey).flushed()
+      await this.swarm.join(drive.discoveryKey, { server: true, client: false }).flushed()
     }
 
     await this._ensureHeader(drive)
